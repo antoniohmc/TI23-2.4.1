@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Médicos</title>
+</head>
+<body>
+  <h1>Lista de Médicos</h1>
+  <ul id="listaMedicos"></ul>
+
+  <script>
+    const medicos = [
+      {
+        nome: 'Leticia',
+        sobrenome: 'Costana',
+        genero: 'feminino',
+        imagemPerfil: 'http://placekitten.com/400/400'
+      },
+      {
+        nome: 'Adimaldo',
+        sobrenome: 'Pinto',
+        genero: 'masculino',
+        imagemPerfil: 'http://placekitten.com/401/401'
+      },
+      {
+        nome: 'Noah',
+        sobrenome: 'Lutus',
+        genero: 'nao-binario',
+        imagemPerfil: 'http://placekitten.com/402/402'
+      },
+    ];
+
+    const listaMedicosElement = document.getElementById('listaMedicos');
+
+    medicos.forEach(medico => {
+      const listItem = document.createElement('li');
+      let apresentacao = '';
+
+      if (medico.genero === 'nao-binario') {
+        apresentacao = `Dr(e) ${medico.nome} ${medico.sobrenome}`;
+      } else if (medico.genero === 'masculino') {
+        apresentacao = `Dr. ${medico.nome} ${medico.sobrenome}`;
+      } else if (medico.genero === 'feminino') {
+        apresentacao = `Dr(a) ${medico.nome} ${medico.sobrenome}`;
+      }
+
+      listItem.innerHTML = `<img src="${medico.imagemPerfil}" width="100" height="100"> ${apresentacao}`;
+      listaMedicosElement.appendChild(listItem);
+    });
+  </script>
+</body>
+</html>
